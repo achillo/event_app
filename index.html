@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html ng-app="eventApp">
+
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link rel="stylesheet" href="css/style.css" />
+    <!--<link rel="stylesheet" type="text/css" href="ng-grid.css" /> -->
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.css" />
+
+
+    <!-- Google Maps API v3 -->
+    <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
+    <!-- Also load the geometry library from Google to do distance calculations quickly.-->
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry"></script>
+    <!--
+    scriptTag.setAttribute('src', 'http://maps.googleapis.com/maps/api/js?v=3&client=gme-netspend&sensor=true&callback=mapReady');-->
+    <!---->
+    <script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.8/angular.js" data-semver="1.2.8"></script>
+
+    <script src="app.js"></script>
+    <script src="services/event-service.js"></script>
+    <!--<script type="text/javascript" src="jquery-1.8.2.js"></script>-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="angular.js"></script>-->
+    <!--<script type="text/javascript" src="ng-grid-2.0.11.min.js"></script> -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.js"></script>
+
+
+
+</head>
+
+<!--
+CDN for ng-grid:
+
+http://cdnjs.com/libraries/ng-grid
+
+        All events:
+        1) No filter on data
+        2) Display all data in grid
+
+        Nearby events:
+        1) Use geolocation to get current location
+        2) Find closest venue from zip code
+        3) Add items to the data model for nearby events
+
+        Upcoming events:
+        1) Use filter to look for events happening within 30 days
+        2) Add items to the data model for upcoming events
+
+        Grouping:
+        1) Group by city using ng-repeat
+        2) Create tables for each group
+
+        Add Event:
+        1) Display form to user to add a new event
+        2) On submit - update the model
+
+        Edit Event:
+        1) Display form to user to edit a new event
+        2) On submit - update the model
+
+        Delete Event:
+        1) Display form to user to edit a new event
+        2) On submit - update the model
+-->
+
+<!--<head lang="en">
+    <meta charset="utf-8">
+    <title>Getting Started With ngGrid Example</title>
+    <link rel="stylesheet" type="text/css" href="ng-grid.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="ng-grid-1.3.2.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>    -->
+
+
+<body ng-controller="MainCtrl">
+
+<p>Welcome!</p>
+
+<div class="gridStyle" ng-grid="gridOptions">
+</div>
+
+
+<!--<div id="tabs" ng-controller="TabsCtrl"> -->
+<div id="tabs" >
+    <ul>
+        <li ng-repeat="tab in tabs"
+            ng-class="{active:isActiveTab(tab.url)}"
+            ng-click="onClickTab(tab)">{{tab.title}}</li>
+    </ul>
+    <div id="mainView">
+        <div ng-include="currentTab"></div>
+    </div>
+</div>
+<script type="text/ng-template" id="all.html">
+    <div id="viewOne">
+        <h1>All Events</h1>
+        <div class="gridStyle" ng-grid="gridOptions">
+        </div>
+
+    </div>
+</script>
+
+<script type="text/ng-template" id="upcoming.html">
+    <div id="viewTwo">
+        <h1>Upcoming Events</h1>
+        <div class="gridStyle" ng-grid="gridOptions">
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="local.html">
+    <div id="viewThree">
+        <h1>Local Events</h1>
+        <div class="gridStyle" ng-grid="gridOptions">
+        </div>
+    </div>
+</script>
+
+
+
+
+</body>
+
+</html>
